@@ -20,15 +20,15 @@ Project is created with:
 
 ## Status
 ### In Progress
-#### To do
 ```  
+To do
 - responsive web design
 - All Tasks component with all tasks (array already exists in store)
 - Expired Tasks component with expired tasks (array already exists in store)
 - Completed Tasks component with completed tasks (array already exists in store)
-?- React Router - in order to handle Tasks List
+- React Router - in order to handle Tasks List ?
 - Logo and better icons
-?- GSAP Animations - when tasks expired/completed
+- GSAP Animations - when tasks expired/completed ?
 ```  
 
 ## Presentation
