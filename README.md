@@ -21,7 +21,7 @@ Project is created with:
 ## Status
 ### In Progress
 ```  
-To do
+To do:
 - responsive web design
 - All Tasks component with all tasks (array already exists in store)
 - Expired Tasks component with expired tasks (array already exists in store)
