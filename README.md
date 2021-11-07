@@ -29,6 +29,8 @@ To do:
 - React Router - in order to handle Tasks List ?
 - Logo and better icons
 - GSAP Animations - when tasks expired/completed ?
+- Info panel
+- Summary panel (status => 4/5 tasks completed : 3 tasks expired)
 ```  
 
 ## Presentation
