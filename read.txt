@@ -1,0 +1,22 @@
+# leftry.
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Presentation](#presentation)
+
+## General info
+To do app in a different form.
+Goal is to focus on 3 most expired tasks.
+```leftry.``` will help You with simple tasks. 
+  
+## Technologies
+Project is created with:
+```  
+- React + Redux
+- Styled Components
+- TypeScript
+```  
+
+## Presentation
+You can visit my behance profile to take a look on this application.
+https://www.behance.net/domenusfedo/projects
