@@ -33,13 +33,15 @@ const orderArrayOnAction = (array: State) => {
     });
 }
 
+const testObj = {
+    finishUntil: new Date('November 08, 2021 03:24:00'),
+    id: 123,
+    priority: 'high',
+    title: 'Test Expired'
+}
+
 const initialState: State = {
-    tasks: [{
-        finishUntil: new Date('November 08, 2021 03:24:00'),
-        id: 123,
-        priority: 'high',
-        title: 'Test Expired'
-    }],
+    tasks: [],
     finished: [],
     expired: [],
 };
@@ -116,34 +118,31 @@ const defaultCase = (state: State) => {
     const savedStore = {
         expired: parsedStoredState.expired,
         finished: parsedStoredState.finished,
-        tasks: parsedStoredState.tasks.map((notConvertedTask: Task): (Task | ExpiredTask) => {
-            let object = {
+        tasks: parsedStoredState.tasks.map((notConvertedTask: Task): Task => {
+            console.log(notConvertedTask)
+            let object: Task | ExpiredTask = {
                 ...notConvertedTask,
                 finishUntil: new Date(notConvertedTask.finishUntil)
             }
-            if (object.finishUntil.getMilliseconds() <= 0) {
-                expireTaskHanlder(state, object)
-                return {
-                    ...object,
-                    expired: true
-                };
-            }
-
             return object;
         })
     }
+
     orderArrayOnAction(savedStore);
 
-    const noExpireTasks = {
-        expired: [
-            ...savedStore.expired,
-            savedStore.tasks.filter((value: ExpiredTask) => value.expired)
-        ],
-        finished: savedStore.finished,
-        tasks: savedStore.tasks.filter((value: ExpiredTask) => !value.expired)
-    }
+    // const noExpireTasks = {
+    //     expired: [
+    //         ...savedStore.expired,
+    //         savedStore.tasks.filter((value: ExpiredTask) => value.expired)
+    //     ],
+    //     finished: savedStore.finished,
+    //     tasks: savedStore.tasks.filter((value: ExpiredTask) => !value.expired)
+    // }
 
-    return noExpireTasks;
+    // console.log(savedStore.tasks.filter((value: ExpiredTask) => value.expired))
+    //console.log(testObj.finishUntil.getMilliseconds())
+
+    return savedStore;
 }
 
 const reducer = (state = initialState, action: taskActions): State => {

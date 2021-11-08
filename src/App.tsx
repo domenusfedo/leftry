@@ -26,7 +26,6 @@ import {
   TaskPriority,
   TaskButton,
   TaskProgress,
-  TasksHolder,
   AvailableTasks,
   Timer
 } from './App.elements'
@@ -153,7 +152,7 @@ const App = () => {
           const left = parseFloat(((100 * diff) / startMiliseconds).toFixed(2));
           const righty = setRightDate(diff);
 
-          if(left <= 0.00) {
+          if(left <= 0.00 || left > 100.00) {
               //Expired Action
               const expiredTask: Task = {
                 id: t.id,
