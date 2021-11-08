@@ -17,14 +17,11 @@ html {
 export const Container = styled.div`
     width: 100vw;
     min-height: 100vh;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
+    
     background-color: ${({ theme }) => theme.colors.secondary};
     color: ${({ theme }) => theme.colors.secondary};
 
     @media screen and (min-width: 960px) {
-        
+
     }
 `

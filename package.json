@@ -1,6 +1,6 @@
 {
-  "name": "leftry.",
-  "homepage": "https://github.com/domenusfedo/leftry.git",
+  "name": "leftry",
+  "homepage": "http://domenusfedo.github.io/leftry",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

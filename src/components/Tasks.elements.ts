@@ -15,6 +15,11 @@ export const Holder = styled.div`
 `;
 
 export const Header = styled.h1`
+    color: ${({ theme }) => theme.colors.white};
+
+    @media screen and (min-width: 960px) {
+        margin-right: 2rem;
+    }
 `;
 
 export const Desc = styled.div`
@@ -76,11 +81,28 @@ export const TaskButton = styled(MdDoneAll)`
 `;
 
 export const HeaderHolder = styled.div`
-    padding: 0 2rem;
+    /* padding: 0 2rem;
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between; */
+
+    color: ${({ theme }) => theme.colors.white};
+    text-align: center;
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 2rem 2rem;
+    font-size: 0.9rem;
+    width: 100%;
+    grid-area: b;
+
+    @media screen and (min-width: 960px) {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
 `;
 
 export const Button = styled.button`

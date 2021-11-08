@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actionCreators } from '../store';
@@ -11,7 +11,10 @@ import {
     Priority,
     PriorityElement,
     AddTask,
-    PrioExp
+    PrioExp,
+    CloseIcon,
+    ActionHolder,
+    InputsHolder
 } from './TaskField.components'
 
 interface IState {
@@ -24,6 +27,7 @@ interface IProps {
 }
 
 const TaskField: React.FC<IProps> = ({visible, visibleSet}) => {
+    const titleInput = useRef<HTMLInputElement>(null);
     const [task, taskSet] = useState<IState["task"]>({
         id: 0,
         title: '',
@@ -44,12 +48,14 @@ const TaskField: React.FC<IProps> = ({visible, visibleSet}) => {
 
     const submitHandler = () => {
        if(
-        task.title.trim().length <= 0 ||
+        (task.title.trim().length <= 0 || task.title.trim().length >= 16)||
         task.priority.trim().length <= 0
        ) { 
-        console.log('error')
            //Error modal logic
-           visibleSet(!visible)
+           titleInput.current!.placeholder = 'provide a title';
+           setTimeout(() => {
+                titleInput.current!.placeholder = 'add title...'
+           }, 1000)
            return
        }
         const taskObj: Task = {
@@ -75,6 +81,10 @@ const TaskField: React.FC<IProps> = ({visible, visibleSet}) => {
     }
 
     const changeHanlder = (e: React.ChangeEvent<HTMLInputElement>): void => {
+        if((e.target.value).trim().toString().length >= 16) {
+            return
+        }
+        
         taskSet({
             ...task,
             [e.target.name]: e.target.value
@@ -101,16 +111,21 @@ const TaskField: React.FC<IProps> = ({visible, visibleSet}) => {
 
     return (
              <TasksField open={visible ? true : false}>
-                <Input name="title" placeholder="add title..." value={task.title} onChange={(event) => changeHanlder(event)}/>
+                <InputsHolder>
+                <Input ref={titleInput} name="title" placeholder="add title..." value={task.title} onChange={(event) => changeHanlder(event)}/>
                 <Priority>
                     <PriorityElement focused={active.high} id="high" onClick={(e) => clickHanlder(e, "priority")}>p1</PriorityElement>
                     <PriorityElement focused={active.medium} id="medium" onClick={(e) => clickHanlder(e, "priority")}>p2</PriorityElement>
                     <PriorityElement focused={active.low} id="low" onClick={(e) => clickHanlder(e, "priority")}>p3</PriorityElement>
                 </Priority>
                 <PrioExp>
-                    You will have {active.high && "2"} {active.medium && "4"} {active.low && "8"} hours 
+                    {active.high && "2"} {active.medium && "4"} {active.low && "8"} hours to complete
                 </PrioExp>
-                <AddTask onClick={() => submitHandler()}>add task</AddTask>
+                </InputsHolder>
+                <ActionHolder>
+                    <AddTask onClick={() => submitHandler()}>add task</AddTask>
+                    <CloseIcon onClick={() => visibleSet(false)}></CloseIcon>
+                </ActionHolder>
             </TasksField>
     );
 };

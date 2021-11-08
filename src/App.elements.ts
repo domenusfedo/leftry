@@ -2,6 +2,27 @@ import styled from "styled-components"
 import { BiTime, BiArrowToRight, BiX } from 'react-icons/bi';
 import { MdDoneAll } from 'react-icons/md';
 import { css } from "styled-components";
+import { Container } from "./theme/global";
+
+export const ContainerMain = styled(Container)`
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: min-content min-content max-content min-content;
+    overflow-x: hidden;
+    
+    grid-template-areas:    "a"
+                            "b"
+                            "c"
+                            "d";
+
+    @media screen and (min-width: 960px) {
+        grid-template-rows: min-content min-content 70% min-content;
+        grid-template-areas:    "a"
+                                "b"
+                                "d"
+                                "c";
+    }
+`
 
 export const HeaderDiv = styled.div`
     width: 100%;
@@ -12,9 +33,11 @@ export const HeaderDiv = styled.div`
     padding: 2rem 2rem;
     font-size: 0.8rem;
     height: 5rem;
-    position: fixed;
+    position: sticky;
+    top: 0;
     box-shadow: 0px 0px 12px 10px rgba(27,27,27,0.25);
     z-index: 500;
+    grid-area: a;
 `;
 
 export const Desc = styled.div`
@@ -29,9 +52,15 @@ export const Profile = styled.img`
     background-color: ${({ theme }) => theme.colors.secondary};
 `;
 
-export const Header = styled.h1`
+export const Header = styled.div`
+    display: flex;
+    justify-content: center;
     font-size: 2.5rem;
     font-weight: 900;
+
+    & svg {
+        margin-right: 0.5rem;
+    }
 `;
 
 export const Informations = styled.div`
@@ -43,6 +72,15 @@ export const Informations = styled.div`
     flex-direction: column;
     color: ${({ theme }) => theme.colors.white};
     margin-bottom: 2rem;
+    grid-area: c;
+    bottom: 0;
+
+    @media screen and (min-width: 960px) {
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+    }
 `
 export const Information = styled.div`
     width: 100%;
@@ -50,6 +88,11 @@ export const Information = styled.div`
     justify-content: flex-start;
     align-items: center;
     margin-bottom: 1rem;
+    @media screen and (min-width: 960px) {
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+    }
 `
 export const Holder = styled.div`
     margin-left: 1rem;
@@ -88,7 +131,7 @@ export const Desc1 = styled.div`
 
 
 export const TaskElement = styled.div`
-    width: 90%;
+    width: 100%;
     height: 7rem;
     margin-bottom: 2rem;
     background-color: ${({ theme }) => theme.colors.secondary};
@@ -103,6 +146,10 @@ export const TaskElement = styled.div`
 
     &:last-child {
         margin-bottom: 0;
+    }
+
+    @media screen and (min-width: 950px) {
+        max-width: 459px;
     }
 `;
 
@@ -171,9 +218,20 @@ export const TaskButton = styled(MdDoneAll)`
 //AvailableTasks
 export const AvailableTasks = styled.div`
     width: 100%;
+    padding: 0 2rem;
     //min-height: 423px; //only if TaskNow 
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
+    grid-area: d;
+    @media screen and (min-width: 960px) {
+        justify-content: center;
+    }
+`
+
+export const TasksHolder = styled.div`
+    width: 100%;
+    margin: 0;
+    padding: 0;
 `

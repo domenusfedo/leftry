@@ -1,7 +1,6 @@
-import { title } from "process";
 import { taskType } from "../action-types";
 import { taskActions } from "../types";
-import { Task } from '../types/index';
+import { Task, ExpiredTask } from '../types/index';
 
 type State = {
     tasks: {
@@ -35,7 +34,12 @@ const orderArrayOnAction = (array: State) => {
 }
 
 const initialState: State = {
-    tasks: [],
+    tasks: [{
+        finishUntil: new Date('November 08, 2021 03:24:00'),
+        id: 123,
+        priority: 'high',
+        title: 'Test Expired'
+    }],
     finished: [],
     expired: [],
 };
@@ -65,15 +69,13 @@ const addTaskHanlder = (state: State, task: Task) => {
             task
         ]
     }
-
+    orderArrayOnAction(updatedState)
     storeToLocalStorage(updatedState);
 
     return updatedState
 }
 
 const removeTaskHanlder = (state: State, obj: Task) => {
-    console.log(obj)
-
     const updatedState = {
         ...state,
         finished: [
@@ -114,18 +116,34 @@ const defaultCase = (state: State) => {
     const savedStore = {
         expired: parsedStoredState.expired,
         finished: parsedStoredState.finished,
-        tasks: parsedStoredState.tasks.map((notConvertedTask: Task) => {
-            const object: Task = {
+        tasks: parsedStoredState.tasks.map((notConvertedTask: Task): (Task | ExpiredTask) => {
+            let object = {
                 ...notConvertedTask,
                 finishUntil: new Date(notConvertedTask.finishUntil)
             }
+            if (object.finishUntil.getMilliseconds() <= 0) {
+                expireTaskHanlder(state, object)
+                return {
+                    ...object,
+                    expired: true
+                };
+            }
+
             return object;
         })
     }
+    orderArrayOnAction(savedStore);
 
-    orderArrayOnAction(savedStore)
+    const noExpireTasks = {
+        expired: [
+            ...savedStore.expired,
+            savedStore.tasks.filter((value: ExpiredTask) => value.expired)
+        ],
+        finished: savedStore.finished,
+        tasks: savedStore.tasks.filter((value: ExpiredTask) => !value.expired)
+    }
 
-    return savedStore;
+    return noExpireTasks;
 }
 
 const reducer = (state = initialState, action: taskActions): State => {

@@ -16,14 +16,12 @@ interface IProps {
 const Tasks: React.FC<IProps> = ({show, showSet}) => {
 
     return (
-        <Holder>
             <HeaderHolder>
                 <Header>My tasks</Header>
                 <Button onClick={(_e) => showSet(!show)}>
                     <AddIcon/>
                 </Button>
             </HeaderHolder>
-        </Holder>
     );
 };
 

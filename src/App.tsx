@@ -9,6 +9,7 @@ import { RootState } from './store/reducers';
 import { Container } from './theme/global';
 
 import {
+  ContainerMain,
   HeaderDiv,
   Header,
   Informations,
@@ -25,6 +26,7 @@ import {
   TaskPriority,
   TaskButton,
   TaskProgress,
+  TasksHolder,
   AvailableTasks,
   Timer
 } from './App.elements'
@@ -79,13 +81,37 @@ const App = () => {
   }, [])
 
   return (
-    
-    <Container>
+    <ContainerMain>
       <HeaderDiv>
-          <Header>leftry.</Header>
+          <Header>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 346.54 281" width="50px" height="50px">
+      <path
+        fill="#fc6"
+        stroke="#fc6"
+        strokeMiterlimit="10"
+        d="M.5 123.26h0v-.5z"
+      ></path>
+      <path
+        fill="#262626"
+        stroke="#262626"
+        strokeMiterlimit="10"
+        strokeWidth="39"
+        d="M206 19.5a121 121 0 10121 121 121 121 0 00-121-121zm0 201.75A80.25 80.25 0 11286.29 141 80.24 80.24 0 01206 221.25z"
+      ></path>
+      <path
+        fill="#fc6"
+        stroke="#fc6"
+        strokeMiterlimit="10"
+        d="M206.89 19.51H206v0a20.6 20.6 0 000 41.17v0a80.25 80.25 0 11-80.25 80.5h0V141v-.5h0a20.36 20.36 0 00-40.69 0h0v.75h0a121 121 0 00122.67 120.24c65.16-.89 118.37-54.06 119.27-119.23A121 121 0 00206.89 19.51z"
+      ></path>
+    </svg>
+            leftry.
+            </Header>
       </HeaderDiv>
 
-      <Tasks show={show} showSet={showSet}/>
+   
+        <Tasks show={show} showSet={showSet}/>
+
 
       <Informations>
           <Information>
@@ -162,7 +188,7 @@ const App = () => {
       {/* <TaskNow>
       </TaskNow> */}
 
-    </Container>
+    </ContainerMain>
   );
 }
 

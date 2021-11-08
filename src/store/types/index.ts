@@ -7,6 +7,14 @@ export interface Task {
     finishUntil: Date //Date
 }
 
+export interface ExpiredTask {
+    id: number;
+    title: string;
+    priority: string;
+    finishUntil: Date,
+    expired: boolean
+}
+
 export interface TaskStored {
     id: number;
     title: string;

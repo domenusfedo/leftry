@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { MdAdd } from 'react-icons/md'
+import { MdAdd } from 'react-icons/md';
+import { BiX } from 'react-icons/bi';
 
 type TaskFieldProps = {
     open: boolean
@@ -20,10 +21,11 @@ export const TasksField = styled.div<TaskFieldProps>`
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
     align-items: center;
     transition: all 0.5s;
+    padding: 3rem 0;
 `;
 
 export const Input = styled.input`
@@ -36,12 +38,14 @@ export const Input = styled.input`
     text-align: center;
     color: inherit;
     font-weight: 800;
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 2rem;
+    width: 90%;
 
 
     &::placeholder {
         color: inherit;
+        opacity: 1;
         font-weight: 800;
     }
 `
@@ -74,24 +78,43 @@ export const AddIcon = styled(MdAdd)`
     color: gray;
 `
 
+export const PrioExp = styled.h5`
+    margin-top: 2rem;
+    padding: 0 2rem;
+`
+
 export const AddTask = styled.button`
-    position: absolute;
-    left: 50%;
-    bottom: 5%;
-    transform: translate(-50%, -5%);
+    width: 80%;
     background-color: ${({ theme }) => theme.colors.secondary};
     border: 0;
     border-radius: 25px;
-    width: 90%;
     color: ${({ theme }) => theme.colors.main};
     font-family: inherit;
     font-weight: bold;
     font-size: 1.5em;
     padding: 2rem 0;
     cursor: pointer;
+    margin-bottom: 1rem;
 `;
 
-export const PrioExp = styled.h5`
-    margin-top: 2rem;
-    padding: 0 2rem;
+export const CloseIcon = styled(BiX)`
+    font-size: 3rem;
 `
+export const ActionHolder = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    /* position: absolute;
+    bottom: 0;
+    left: 0; */
+`
+
+export const InputsHolder = styled.div`
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`;
