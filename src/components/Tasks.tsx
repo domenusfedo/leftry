@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-    Holder,
     HeaderHolder,
     Header,
     Button,

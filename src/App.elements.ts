@@ -38,6 +38,10 @@ export const HeaderDiv = styled.div`
     box-shadow: 0px 0px 12px 10px rgba(27,27,27,0.25);
     z-index: 500;
     grid-area: a;
+
+    @media screen and (max-width: 360px) {
+        padding: 0.2rem;
+    }
 `;
 
 export const Desc = styled.div`
@@ -80,6 +84,10 @@ export const Informations = styled.div`
         align-items: center;
         justify-content: center;
         flex-direction: row;
+    }
+
+    @media screen and (max-width: 360px) {
+        padding: 0 0.5rem;
     }
 `
 export const Information = styled.div`
@@ -226,7 +234,11 @@ export const AvailableTasks = styled.div`
     flex-direction: column;
     grid-area: d;
     @media screen and (min-width: 960px) {
-        justify-content: center;
+        justify-content: flex-start;
+    }
+
+    @media screen and (max-width: 360px) {
+        padding: 0;
     }
 `
 

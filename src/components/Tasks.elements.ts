@@ -1,19 +1,6 @@
 import styled from "styled-components"
 import { MdDoneAll, MdAdd } from 'react-icons/md'
 
-export const Holder = styled.div`
-    color: ${({ theme }) => theme.colors.white};
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 2rem 0rem;
-    padding-top: 7rem;
-    font-size: 0.9rem;
-    width: 100%;
-`;
-
 export const Header = styled.h1`
     color: ${({ theme }) => theme.colors.white};
 
@@ -102,6 +89,9 @@ export const HeaderHolder = styled.div`
         width: 100%;
         justify-content: center;
         align-items: center;
+    }
+    @media screen and (max-width: 360px) {
+        padding: 2rem 0.5rem;
     }
 `;
 

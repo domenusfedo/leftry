@@ -6,8 +6,6 @@ import { bindActionCreators } from 'redux';
 import { actionCreators } from './store';
 import { RootState } from './store/reducers';
 
-import { Container } from './theme/global';
-
 import {
   ContainerMain,
   HeaderDiv,
@@ -176,7 +174,7 @@ const App = () => {
               </TaskElement>
             )
               }
-              return <></>
+              return []
           }) : <TaskTitle>no tasks</TaskTitle>
         }
       </AvailableTasks>
@@ -184,9 +182,6 @@ const App = () => {
       <TaskField visible={show} visibleSet={showSet}>
 
       </TaskField>
-      {/* <TaskNow>
-      </TaskNow> */}
-
     </ContainerMain>
   );
 }

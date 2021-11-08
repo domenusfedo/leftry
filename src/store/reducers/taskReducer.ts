@@ -33,12 +33,12 @@ const orderArrayOnAction = (array: State) => {
     });
 }
 
-const testObj = {
-    finishUntil: new Date('November 08, 2021 03:24:00'),
-    id: 123,
-    priority: 'high',
-    title: 'Test Expired'
-}
+// const testObj = {
+//     finishUntil: new Date('November 08, 2021 03:24:00'),
+//     id: 123,
+//     priority: 'high',
+//     title: 'Test Expired'
+// }
 
 const initialState: State = {
     tasks: [],
@@ -48,7 +48,7 @@ const initialState: State = {
 
 const addTaskHanlder = (state: State, task: Task) => {
     let finishDate = task.finishUntil;
-    let hoursAdded: number;
+    let hoursAdded = 4;
 
     const addHours = function (h: any) {
         finishDate.setHours(finishDate.getHours() + h);
@@ -57,13 +57,13 @@ const addTaskHanlder = (state: State, task: Task) => {
 
     if (task.priority === 'high') {
         hoursAdded = 2;
-    } else if (task.priority === 'medium') {
-        hoursAdded = 4;
-    } else {
+    } else if (task.priority === 'low') {
         hoursAdded = 8;
     }
     finishDate = addHours(hoursAdded);
 
+
+    console.log(task)
     const updatedState = {
         ...state,
         tasks: [
@@ -119,7 +119,6 @@ const defaultCase = (state: State) => {
         expired: parsedStoredState.expired,
         finished: parsedStoredState.finished,
         tasks: parsedStoredState.tasks.map((notConvertedTask: Task): Task => {
-            console.log(notConvertedTask)
             let object: Task | ExpiredTask = {
                 ...notConvertedTask,
                 finishUntil: new Date(notConvertedTask.finishUntil)
