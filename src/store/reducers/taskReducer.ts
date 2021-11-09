@@ -142,7 +142,7 @@ const defaultCase = (state: State) => {
     // console.log(savedStore.tasks.filter((value: ExpiredTask) => value.expired))
     //console.log(testObj.finishUntil.getMilliseconds())
 
-    return state;
+    return savedStore;
 }
 
 const reducer = (state = initialState, action: taskActions): State => {

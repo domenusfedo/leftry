@@ -165,8 +165,7 @@ export const TaskProgress = styled.h3`
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-radius: 10px;
     background-color: transparent;
     color: darkgrey;
     left: 0;
