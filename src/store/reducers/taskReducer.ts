@@ -34,8 +34,8 @@ const orderArrayOnAction = (array: State) => {
 }
 
 // const testObj = {
-//     finishUntil: new Date('November 08, 2021 03:24:00'),
-//     id: 123,
+//     finishUntil: new Date('November 9, 2021 11:55:00'),
+//     id: 12113,
 //     priority: 'high',
 //     title: 'Test Expired'
 // }
@@ -115,6 +115,7 @@ const defaultCase = (state: State) => {
     }
     const parsedStoredState = JSON.parse(storedState);
 
+
     const savedStore = {
         expired: parsedStoredState.expired,
         finished: parsedStoredState.finished,
@@ -141,7 +142,7 @@ const defaultCase = (state: State) => {
     // console.log(savedStore.tasks.filter((value: ExpiredTask) => value.expired))
     //console.log(testObj.finishUntil.getMilliseconds())
 
-    return savedStore;
+    return state;
 }
 
 const reducer = (state = initialState, action: taskActions): State => {

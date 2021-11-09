@@ -137,12 +137,12 @@ const App = () => {
       <AvailableTasks>
         {store.tasks.tasks.length > 0 ? store.tasks.tasks.map((t, i) => {
           const diff = Math.abs(t.finishUntil.getTime() - currentTime.getTime());
-          let hours: number;
+          
+          //Can be optimzed by providing start date/hours
+          let hours = 4;
           if(t.priority === 'high') {
             hours = 2
-          } else if (t.priority === 'medium'){
-            hours = 4
-          } else {
+          } else if (t.priority === 'low'){
             hours = 8
           }
           let startMiliseconds = hours * 60 * 60 *1000;
@@ -150,8 +150,9 @@ const App = () => {
           const left = parseFloat(((100 * diff) / startMiliseconds).toFixed(2));
           const righty = setRightDate(diff);
 
-          if(left <= 0.00 || left > 100.00) {
-              //Expired Action
+          const expired = t.finishUntil.getTime() - currentTime.getTime()
+
+          if(expired <= 0) {
               const expiredTask: Task = {
                 id: t.id,
                 finishUntil: t.finishUntil,
