@@ -165,7 +165,6 @@ export const TaskProgress = styled.h3`
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
     background-color: transparent;
     color: darkgrey;
     left: 0;
@@ -184,8 +183,6 @@ export const Timer = styled.div<Progress>`
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
     background-color: ${({ theme }) => theme.colors.main};
     color: ${({ theme }) => theme.colors.secondary};
     position: absolute;
@@ -194,6 +191,7 @@ export const Timer = styled.div<Progress>`
     font-weight: 600;
     height: 0.2rem;
     transition: all 0.5s;
+    border-radius: 50px;
 `;
 
 export const TaskTitle = styled.h2`
